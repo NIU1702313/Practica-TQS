@@ -10,12 +10,25 @@ public class CellTest {
 
     @Test
 
-    public void Test_Constructor() {
+    public void test_Constructor() {
         Cell cell = new Cell();
         assertFalse(cell.getIsFlagged());
         assertFalse(cell.getIsMine());
         assertFalse(cell.getIsRevealed());
 
     }
+
+    @Test
+
+    public void test_ConstructorP(){
+        Cell cell = new Cell(true);
+        assertTrue(cell.getIsMine());
+        assertFalse(cell.getIsFlagged());
+        assertFalse(cell.getIsRevealed());
+        
+
+    }
+
+    
 
 }
