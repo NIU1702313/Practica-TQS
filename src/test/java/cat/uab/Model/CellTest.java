@@ -41,4 +41,17 @@ public class CellTest {
 
     }
 
+    @Test
+    public void test_toggleFlag() {
+        Cell cell = new Cell();
+        assertFalse(cell.getIsFlagged());
+        cell.toggleFlag();
+        assertTrue(cell.getIsFlagged());
+
+        // mirem que s'ha girat
+        cell.toggleFlag();
+        assertFalse(cell.getIsFlagged());
+
+    }
+
 }
