@@ -5,27 +5,20 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 public class CellTest {
-
-    // TDD
-
     @Test
-
-    public void test_Constructor() {
+    public void test_constructor() {
         Cell cell = new Cell();
         assertFalse(cell.getIsFlagged());
         assertFalse(cell.getIsMine());
         assertFalse(cell.getIsRevealed());
-
     }
 
     @Test
-
-    public void test_ConstructorP() {
+    public void test_constructorWithParameters() {
         Cell cell = new Cell(true);
         assertTrue(cell.getIsMine());
         assertFalse(cell.getIsFlagged());
         assertFalse(cell.getIsRevealed());
-
     }
 
     @Test
@@ -35,10 +28,8 @@ public class CellTest {
         assertFalse(cell.reveal());
         assertTrue(cell.getIsRevealed());
 
-        // mirem que segueix sent true
         assertFalse(cell.reveal());
         assertTrue(cell.getIsRevealed());
-
     }
 
     @Test
@@ -48,10 +39,7 @@ public class CellTest {
         cell.toggleFlag();
         assertTrue(cell.getIsFlagged());
 
-        // mirem que s'ha girat
         cell.toggleFlag();
         assertFalse(cell.getIsFlagged());
-
     }
-
 }
