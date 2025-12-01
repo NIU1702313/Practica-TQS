@@ -8,8 +8,6 @@ import org.junit.jupiter.api.Test;
 import cat.uab.RandomNumberGenerator;
 
 public class GameTest {
-
-    // Tests TDD
     @Test
     public void test_Constructor() {
         RandomNumberGenerator rng = new RandomNumberGenerator();
@@ -19,7 +17,6 @@ public class GameTest {
         assertEquals(4, game.getRows());
         assertEquals(5, game.getColumns());
         assertEquals(3, game.getNumMines());
-
     }
 
     @Test
@@ -29,30 +26,23 @@ public class GameTest {
 
         try {
             game.reveal(-1, -1);
-            fail("Expected an exception");
+            fail("Expected an IllegalArgumentException");
         } catch (IllegalArgumentException e) {
             // pass
-            // esperes error
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             fail("Expected an IllegalArgumentException");
         }
 
         try {
             game.reveal(4, 5);
-            fail("Expected an exception");
+            fail("Expected an IllegalArgumentException");
         } catch (IllegalArgumentException e) {
             // pass
-            // esperes error
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             fail("Expected an IllegalArgumentException");
         }
 
         game.reveal(0, 0);
-
     }
 
 }
