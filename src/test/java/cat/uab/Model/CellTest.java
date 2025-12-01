@@ -5,17 +5,41 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 public class CellTest {
-
-    // TDD
-
     @Test
-
-    public void Test_Constructor() {
+    public void test_constructor() {
         Cell cell = new Cell();
         assertFalse(cell.getIsFlagged());
         assertFalse(cell.getIsMine());
         assertFalse(cell.getIsRevealed());
-
     }
 
+    @Test
+    public void test_constructorWithParameters() {
+        Cell cell = new Cell(true);
+        assertTrue(cell.getIsMine());
+        assertFalse(cell.getIsFlagged());
+        assertFalse(cell.getIsRevealed());
+    }
+
+    @Test
+    public void test_reveal() {
+        Cell cell = new Cell();
+        assertFalse(cell.getIsRevealed());
+        assertFalse(cell.reveal());
+        assertTrue(cell.getIsRevealed());
+
+        assertFalse(cell.reveal());
+        assertTrue(cell.getIsRevealed());
+    }
+
+    @Test
+    public void test_toggleFlag() {
+        Cell cell = new Cell();
+        assertFalse(cell.getIsFlagged());
+        cell.toggleFlag();
+        assertTrue(cell.getIsFlagged());
+
+        cell.toggleFlag();
+        assertFalse(cell.getIsFlagged());
+    }
 }
