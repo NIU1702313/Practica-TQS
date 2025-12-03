@@ -7,25 +7,25 @@ import org.junit.jupiter.api.Test;
 
 import cat.uab.RandomNumberGenerator;
 
-public class GameTest {
+public class BoardTest {
     @Test
     public void test_Constructor() {
         RandomNumberGenerator rng = new RandomNumberGenerator();
 
-        Game game = new Game(4, 5, 3, rng);
+        Board Board = new Board(4, 5, 3, rng);
 
-        assertEquals(4, game.getRows());
-        assertEquals(5, game.getColumns());
-        assertEquals(3, game.getNumMines());
+        assertEquals(4, Board.getRows());
+        assertEquals(5, Board.getColumns());
+        assertEquals(3, Board.getNumMines());
     }
 
     @Test
     public void test_reveal_Range() {
         RandomNumberGenerator rng = new RandomNumberGenerator();
-        Game game = new Game(4, 5, 3, rng);
+        Board Board = new Board(4, 5, 3, rng);
 
         try {
-            game.reveal(-1, -1);
+            Board.reveal(-1, -1);
             fail("Expected an IllegalArgumentException");
         } catch (IllegalArgumentException e) {
             // pass
@@ -34,7 +34,7 @@ public class GameTest {
         }
 
         try {
-            game.reveal(4, 5);
+            Board.reveal(4, 5);
             fail("Expected an IllegalArgumentException");
         } catch (IllegalArgumentException e) {
             // pass
@@ -42,7 +42,7 @@ public class GameTest {
             fail("Expected an IllegalArgumentException");
         }
 
-        game.reveal(0, 0);
+        Board.reveal(0, 0);
     }
 
 }
