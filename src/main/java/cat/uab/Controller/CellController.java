@@ -31,7 +31,7 @@ public class CellController {
   }
 
   public boolean getIsFlagged() {
-    return this.getIsFlagged();
+    return this.model.getIsFlagged();
   }
 
   public void render() {
