@@ -1,25 +1,26 @@
 package cat.uab.Model;
 
 import cat.uab.RandomNumberGenerator;
+import cat.uab.Controller.CellController;
 
-public class Game {
-    private Cell[][] board;
+public class Board {
+    private CellController[][] board;
     private boolean areMinesPlaced = false;
     private int rows;
     private int columns;
     private int numMines;
     private RandomNumberGenerator rng;
 
-    public Game(int rows, int columns, int numMines, RandomNumberGenerator rng) {
+    public Board(int rows, int columns, int numMines, RandomNumberGenerator rng) {
         this.rows = rows;
         this.columns = columns;
         this.numMines = numMines;
         this.rng = rng;
-        this.board = new Cell[rows][columns];
+        this.board = new CellController[rows][columns];
 
         for (int i = 0; i < rows; i++)
             for (int j = 0; j < columns; j++)
-                this.board[i][j] = new Cell(false);
+                this.board[i][j] = new CellController(0, false);
     }
 
     public boolean reveal(int row, int column) {
@@ -27,29 +28,29 @@ public class Game {
             throw new IllegalArgumentException("Row or column out of range");
 
         if (!this.areMinesPlaced) {
-            this.placeMines();
+            this.placeMines(row, column);
             return false;
         }
 
         return board[row][column].reveal();
     }
 
-    public void placeMines() {
+    private void placeMines(int row, int column) {
         if (this.areMinesPlaced)
             return;
         this.areMinesPlaced = true;
 
-        board = new Cell[rows][columns];
+        board = new CellController[rows][columns];
         for (int i = 0; i < rows; i++)
             for (int j = 0; j < columns; j++)
-                board[i][j] = new Cell(false);
+                board[i][j] = new CellController(this.numMines, false);
 
         int[][] mines = this.generateMines();
 
         for (int i = 0; i < this.numMines; i++) {
             int r = mines[i][0];
             int c = mines[i][1];
-            board[r][c] = new Cell(true);
+            board[r][c] = new CellController(this.numMines, true);
         }
     }
 
@@ -76,5 +77,9 @@ public class Game {
 
     public boolean getMinesPlaced() {
         return this.areMinesPlaced;
+    }
+
+    public CellController getCell(int row, int column) {
+        return this.board[row][column];
     }
 }
