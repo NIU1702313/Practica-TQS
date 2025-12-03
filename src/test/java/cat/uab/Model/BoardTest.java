@@ -12,20 +12,20 @@ public class BoardTest {
     public void test_Constructor() {
         RandomNumberGenerator rng = new RandomNumberGenerator();
 
-        Board Board = new Board(4, 5, 3, rng);
+        Board board = new Board(4, 5, 3, rng);
 
-        assertEquals(4, Board.getRows());
-        assertEquals(5, Board.getColumns());
-        assertEquals(3, Board.getNumMines());
+        assertEquals(4, board.getRows());
+        assertEquals(5, board.getColumns());
+        assertEquals(3, board.getNumMines());
     }
 
     @Test
     public void test_reveal_Range() {
         RandomNumberGenerator rng = new RandomNumberGenerator();
-        Board Board = new Board(4, 5, 3, rng);
+        Board board = new Board(4, 5, 3, rng);
 
         try {
-            Board.reveal(-1, -1);
+            board.reveal(-1, -1);
             fail("Expected an IllegalArgumentException");
         } catch (IllegalArgumentException e) {
             // pass
@@ -34,7 +34,7 @@ public class BoardTest {
         }
 
         try {
-            Board.reveal(4, 5);
+            board.reveal(4, 5);
             fail("Expected an IllegalArgumentException");
         } catch (IllegalArgumentException e) {
             // pass
@@ -42,7 +42,7 @@ public class BoardTest {
             fail("Expected an IllegalArgumentException");
         }
 
-        Board.reveal(0, 0);
+        board.reveal(0, 0);
     }
 
 }

@@ -6,38 +6,38 @@ import cat.uab.View.BoardView;
 
 public class BoardController {
   private BoardView gv;
-  private Board Board;
+  private Board board;
 
   public BoardController(int rows, int columns, int numMines, RandomNumberGenerator rng) {
     this.gv = new BoardView();
-    this.Board = new Board(rows, columns, numMines, rng);
+    this.board = new Board(rows, columns, numMines, rng);
   }
 
   public void render() {
-    this.gv.showBoard(this.Board);
+    this.gv.showBoard(this.board);
   }
 
   public boolean reveal(int row, int column) {
-    return this.Board.reveal(row, column);
+    return this.board.reveal(row, column);
   }
 
   public int getRows() {
-    return this.Board.getRows();
+    return this.board.getRows();
   }
 
   public int getColumns() {
-    return this.Board.getColumns();
+    return this.board.getColumns();
   }
 
   public int getNumMines() {
-    return this.Board.getNumMines();
+    return this.board.getNumMines();
   }
 
   public boolean getMinesPlaced() {
-    return this.Board.getMinesPlaced();
+    return this.board.getMinesPlaced();
   }
 
   public CellController getCell(int row, int column) {
-    return this.Board.getCell(row, column);
+    return this.board.getCell(row, column);
   }
 }
