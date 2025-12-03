@@ -4,12 +4,12 @@ import cat.uab.Model.Cell;
 import cat.uab.View.CellView;
 
 public class CellController {
-  Cell model;
-  CellView view;
-  int nBombs;
+  private Cell model;
+  private CellView view;
+  private int nBombs;
 
-  public CellController(int nBombs) {
-    this.model = new Cell();
+  public CellController(int nBombs, boolean isBomb) {
+    this.model = new Cell(isBomb);
     this.view = new CellView();
     this.nBombs = nBombs;
   }

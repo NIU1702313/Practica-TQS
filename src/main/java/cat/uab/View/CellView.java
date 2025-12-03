@@ -45,6 +45,8 @@ public class CellView {
         default:
           break;
       }
+    } else {
+      System.out.print("■");
     }
   }
 }
