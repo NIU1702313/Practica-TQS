@@ -6,12 +6,12 @@ import cat.uab.View.CellView;
 public class CellController {
   private Cell model;
   private CellView view;
-  private int nBombs;
+  private int nMines;
 
-  public CellController(int nBombs, boolean isBomb) {
+  public CellController(int nMines, boolean isBomb) {
     this.model = new Cell(isBomb);
     this.view = new CellView();
-    this.nBombs = nBombs;
+    this.nMines = nMines;
   }
 
   public boolean reveal() {
@@ -35,6 +35,10 @@ public class CellController {
   }
 
   public void render() {
-    this.view.showCell(this.model, this.nBombs);
+    this.view.showCell(this.model, this.nMines);
+  }
+
+  public int getNMines() {
+    return this.nMines;
   }
 }

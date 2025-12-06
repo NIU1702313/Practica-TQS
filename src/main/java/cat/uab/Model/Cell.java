@@ -40,5 +40,4 @@ public class Cell {
     public boolean getIsFlagged() {
         return this.isFlagged;
     }
-
 }
