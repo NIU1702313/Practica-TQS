@@ -33,11 +33,24 @@ public class BoardController {
     return this.board.getNumMines();
   }
 
-  public boolean getMinesPlaced() {
-    return this.board.getMinesPlaced();
+  public boolean areMinesPlaced() {
+    return this.board.areMinesPlaced();
   }
 
   public CellController getCell(int row, int column) {
     return this.board.getCell(row, column);
+  }
+
+  public void toggleFlag(int row, int column) {
+    this.board.toggleFlag(row, column);
+  }
+
+  public boolean checkWin() {
+    return this.board.checkWin();
+  }
+
+  public void showMines() {
+    this.board.showMines();
+    this.gv.showBoard(this.board);
   }
 }
