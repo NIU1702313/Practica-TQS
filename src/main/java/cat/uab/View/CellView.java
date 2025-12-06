@@ -45,6 +45,8 @@ public class CellView {
         default:
           break;
       }
+    } else if (cell.getIsFlagged()) {
+      System.out.print("\u001B[31m■\u001B[0m");
     } else {
       System.out.print("■");
     }
